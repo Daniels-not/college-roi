@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: mart_institution_roi
+    description: ROI metrics per institution (only schools with 10-year earnings).
+    columns:
+      - name: unitid
+        data_tests: [not_null, unique]
+      - name: earnings_10yr_adj
+        description: 10-year median earnings adjusted for state cost of living.
+        data_tests: [not_null, non_negative]
+      - name: debt_to_earnings
+        data_tests: [non_negative]
+      - name: payback_years
+        data_tests: [non_negative]
+
+  - name: mart_hbcu_summary
+    description: Raw (uncontrolled) HBCU vs. non-HBCU medians.
+    columns:
+      - name: group_name
+        data_tests:
+          - unique
+          - accepted_values:
+              arguments:
+                values: ["HBCU", "Non-HBCU"]

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: scorecard
+    description: Tables loaded by the Python ingestion step (src/scorecard/ingest.py).
+    schema: main
+    tables:
+      - name: raw_institutions
+        description: One row per institution, renamed from the College Scorecard API.
+        columns:
+          - name: unitid
+            data_tests: [not_null, unique]
+      - name: raw_programs
+        description: One row per bachelor's program (field of study), flattened from the API.

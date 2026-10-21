@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: pip install -e ".[dev,analysis]"
+
+      - name: Lint + format check
+        run: |
+          ruff check src tests app
+          ruff format --check src tests app
+
+      - name: Unit + pipeline tests (no network; uses mocked API and synthetic data)
+        run: pytest -q
+
+      - name: End-to-end demo run (dbt build + models + export)
+        run: python -m scorecard demo --n 800

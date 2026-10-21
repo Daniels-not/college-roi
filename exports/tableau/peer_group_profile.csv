@@ -1,0 +1,4 @@
+peer_group,peer_group_label,n_schools,median_enrollment,median_admission_rate,median_net_price,median_pell_rate,median_grad_rate,median_earnings_10yr_adj,pct_hbcu
+0,"Mid-size private, moderately selective, high cost",224,4411.0,0.39425,29412.0,0.2007,0.8353999999999999,81331.5,0.008928571428571428
+1,"Small private, moderately selective, mid cost",650,818.0,0.7721,17668.5,0.53925,0.4,51152.5,0.1123076923076923
+2,"Mid-size private, moderately selective, mid cost",918,2193.5,0.78735,21046.5,0.3416,0.58385,62436.0,0.006535947712418301

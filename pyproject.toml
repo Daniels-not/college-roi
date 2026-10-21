@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "college-roi"
+version = "0.2.0"
+description = "Is college worth it? An ROI analysis of U.S. colleges using College Scorecard data."
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31",
+    "pandas>=2.1",
+    "duckdb>=1.0",
+    "pyarrow>=14",
+    "python-dotenv>=1.0",
+    "dbt-duckdb>=1.10",
+    "statsmodels>=0.14",
+    "scikit-learn>=1.4",
+]
+
+[project.optional-dependencies]
+analysis = ["plotly>=5.20", "jupyterlab>=4", "streamlit>=1.50"]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# Explicit rule set so local and CI results match across ruff versions.
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["scorecard"]
+known-local-folder = ["conftest"]

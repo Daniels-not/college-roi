@@ -1,0 +1,9 @@
+# The Python CLI sets SCORECARD_DB to an absolute path before calling dbt,
+# so this works no matter which folder you run from.
+college_roi:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('SCORECARD_DB', '../data/scorecard.duckdb') }}"
+      threads: 1

@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_institutions
+    description: Cleaned institution-level data; one row per school.
+    columns:
+      - name: unitid
+        description: IPEDS unit ID (primary key).
+        data_tests: [not_null, unique]
+      - name: ownership
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["Public", "Private nonprofit", "Private for-profit"]
+      - name: admission_rate
+        data_tests:
+          - rate_between_0_and_1
+      - name: pell_rate
+        data_tests:
+          - rate_between_0_and_1
+      - name: grad_rate
+        data_tests:
+          - rate_between_0_and_1
+      - name: earnings_10yr
+        data_tests:
+          - non_negative
+
+  - name: stg_state_rpp
+    description: State price index (1.00 = national average).
+    columns:
+      - name: state
+        data_tests: [not_null, unique]
+      - name: price_index
+        data_tests: [not_null]

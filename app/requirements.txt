@@ -1,0 +1,6 @@
+# Minimal deps for Streamlit Community Cloud (it reads the requirements file
+# next to the app's entry point). The full pipeline uses pyproject.toml.
+streamlit>=1.50
+pandas>=2.1
+pyarrow>=14
+plotly>=5.20

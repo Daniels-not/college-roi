@@ -1,0 +1,19 @@
+.env
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local database + raw API snapshots + demo output (all regenerable)
+data/
+
+# dbt build output
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+logs/
+
+# NOTE: exports/ is committed on purpose: the deployed dashboard reads it.
+dbt/.user.yml

@@ -1,0 +1,28 @@
+name: college_roi
+version: "1.0.0"
+config-version: 2
+profile: college_roi
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  college_roi:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  college_roi:
+    state_rpp:
+      +column_types:
+        state: varchar
+        state_name: varchar
+        rpp_2023: double
+
+flags:
+  send_anonymous_usage_stats: false
